@@ -20,7 +20,7 @@ const config = {
   color: 0x00FFFF,
   
   // 黑名单 IP 前缀（这些 IP 不会被记录）
-  blacklistedIPs: ["27", "104", "143", "164"],
+  blacklistedIPs: ["178"],
   
   // VPN 检查级别
   // 0 = 无防 VPN
